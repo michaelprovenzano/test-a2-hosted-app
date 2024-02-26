@@ -7,11 +7,14 @@ const app = express();
 app.set('view engine', 'pug');
 path.join(__dirname, '/views');
 
-app.get('/', (req, res) => {
+let rootUrl = process.env.DEVELOPMENT_ROOT_URL;
+if (process.env.NODE_ENV === 'production') rootUrl = process.env.PRODUCTION_ROOT_URL;
+
+app.get(`${rootUrl}/`, (req, res) => {
   res.render('main');
 });
 
-app.get('/api/test', (req, res) => {
+app.get(`${rootUrl}/api/test`, (req, res) => {
   res.send({
     message: 'API data is rendered successfully',
   });
