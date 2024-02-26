@@ -9,5 +9,7 @@ html(lang="en")
     p API Status: 
       span#message 
     
+    include node_env.pug
+
     script.
       fetch(`${rootUrl}/api/test`).then(response => response.json()).then(json => document.getElementById('message').innerText = json.message);
