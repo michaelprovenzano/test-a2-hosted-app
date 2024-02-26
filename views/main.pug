@@ -9,7 +9,9 @@ html(lang="en")
     p API Status: 
       span#message 
     
-    include node_env.pug
+    if (isProduction)
+      include production-url.pug
 
     script.
+      if (!rootUrl) var rootUrl = '';
       fetch(`${rootUrl}/api/test`).then(response => response.json()).then(json => document.getElementById('message').innerText = json.message);
