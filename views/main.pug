@@ -9,7 +9,7 @@ html(lang="en")
     p API Status: 
       span#message 
     
-    if (isProduction)
+    if (env === 'production')
       include production-url.pug
 
     script.

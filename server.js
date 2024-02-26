@@ -11,7 +11,7 @@ let rootUrl = process.env.DEVELOPMENT_ROOT_URL;
 if (process.env.NODE_ENV === 'production') rootUrl = process.env.PRODUCTION_ROOT_URL;
 
 app.get(`${rootUrl}/`, (req, res) => {
-  res.render('main', { rootUrl: 'hi' });
+  res.render('main', { env: process.env.NODE_ENV });
 });
 
 app.get(`${rootUrl}/api/test`, (req, res) => {
